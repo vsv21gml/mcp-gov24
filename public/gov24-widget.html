@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>정부24 민원 안내</title>
+    <style>
+      :root {
+        color: #0f172a;
+        font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+        background: #f1f5f9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 16px;
+        background: #e2e8f0;
+        overflow-y: hidden;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #f8fafc;
+        border-radius: 18px;
+        padding: 20px 20px 24px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 18px;
+        padding: 16px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #111827, #1e293b);
+        color: #f8fafc;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      header p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: #e2e8f0;
+      }
+
+      .intro {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 14px;
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
+      .loading {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .loading-label {
+        font-size: 0.9rem;
+        color: #475569;
+      }
+
+      .progress {
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        background: #e2e8f0;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        width: 30%;
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #0f172a, #1d4ed8);
+        animation: progress-slide 1.1s ease-in-out infinite;
+      }
+
+      @keyframes progress-slide {
+        0% {
+          transform: translateX(-120%);
+        }
+        50% {
+          transform: translateX(60%);
+        }
+        100% {
+          transform: translateX(220%);
+        }
+      }
+
+      .status {
+        background: #fff7ed;
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 0.9rem;
+        color: #9a3412;
+        margin-bottom: 16px;
+        border: 1px solid #fed7aa;
+      }
+
+      .results {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .card {
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
+        padding: 16px;
+        background: #ffffff;
+        position: relative;
+        overflow: hidden;
+        min-width: 320px;
+        max-width: 520px;
+        min-height: 360px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 1.02rem;
+      }
+
+      .meta {
+        margin: 0 0 8px;
+        color: #475569;
+        font-size: 0.9rem;
+        min-height: 38px;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .meta.expanded {
+        display: block;
+        max-height: none;
+      }
+
+      .toggle {
+        border: none;
+        background: transparent;
+        color: #1d4ed8;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 0;
+        cursor: pointer;
+        margin-bottom: 8px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #3730a3;
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .section-title {
+        margin: 12px 0 6px;
+        font-size: 0.85rem;
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #334155;
+        font-size: 0.9rem;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .links a {
+        color: #0f172a;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #e2e8f0;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+
+      .links a span {
+        color: #1d4ed8;
+        font-weight: 700;
+      }
+
+      .empty {
+        padding: 12px;
+        border-radius: 12px;
+        background: #f1f5f9;
+        font-size: 0.9rem;
+        color: #475569;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>정부24 민원 안내</h1>
+        <p>챗GPT가 필요한 발급 서류를 골라 카드로 보여드려요.</p>
+      </header>
+
+      <div class="intro">
+        <div>발급이 필요한 서류가 있으면 아래에 카드가 표시됩니다.</div>
+        <div>카드의 버튼을 누르면 정부24 발급 페이지로 이동합니다.</div>
+      </div>
+
+      <div id="loading" class="loading" hidden>
+        <div class="loading-label">검색 중...</div>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div id="status" class="status" hidden></div>
+      <section id="results" class="results"></section>
+    </main>
+
+    <script type="module">
+      const statusEl = document.querySelector("#status");
+      const resultsEl = document.querySelector("#results");
+      const loadingEl = document.querySelector("#loading");
+
+      const state = {
+        message: "",
+        reply: "",
+        matches: []
+      };
+
+      const clearResults = () => {
+        resultsEl.innerHTML = "";
+      };
+
+      const setLoading = (isLoading) => {
+        loadingEl.hidden = !isLoading;
+        loadingEl.style.display = isLoading ? "flex" : "none";
+      };
+
+      const renderStatus = () => {
+        if (!state.reply || state.matches.length) {
+          statusEl.hidden = true;
+          statusEl.textContent = "";
+          return;
+        }
+
+        setLoading(false);
+        statusEl.hidden = false;
+        statusEl.textContent = state.reply;
+      };
+
+      const renderMatches = () => {
+        clearResults();
+
+        if (!state.matches.length) {
+          if (!loadingEl.hidden) {
+            return;
+          }
+          const empty = document.createElement("div");
+          empty.className = "empty";
+          empty.textContent = "결과가 없습니다. 다른 민원을 입력해 주세요.";
+          resultsEl.appendChild(empty);
+          return;
+        }
+
+        setLoading(false);
+        state.matches.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "card";
+
+          const pill = document.createElement("div");
+          pill.className = "pill";
+          pill.textContent = "발급 가능";
+          card.appendChild(pill);
+
+          const title = document.createElement("h2");
+          title.textContent = item.title || "민원";
+          card.appendChild(title);
+
+          if (item.summary) {
+            const meta = document.createElement("p");
+            meta.className = "meta";
+            meta.textContent = item.summary;
+            card.appendChild(meta);
+
+            if (item.summary.length > 80) {
+              const toggle = document.createElement("button");
+              toggle.type = "button";
+              toggle.className = "toggle";
+              toggle.textContent = "설명 펼치기";
+              toggle.addEventListener("click", () => {
+                const expanded = meta.classList.toggle("expanded");
+                toggle.textContent = expanded ? "설명 접기" : "설명 펼치기";
+              });
+              card.appendChild(toggle);
+            }
+          }
+
+          if (Array.isArray(item.required_documents) && item.required_documents.length) {
+            const sectionTitle = document.createElement("div");
+            sectionTitle.className = "section-title";
+            sectionTitle.textContent = "필요 서류";
+            card.appendChild(sectionTitle);
+
+            const list = document.createElement("ul");
+            item.required_documents.forEach((doc) => {
+              const li = document.createElement("li");
+              li.textContent = doc;
+              list.appendChild(li);
+            });
+            card.appendChild(list);
+          }
+
+          if (Array.isArray(item.links) && item.links.length) {
+            const sectionTitle = document.createElement("div");
+            sectionTitle.className = "section-title";
+            sectionTitle.textContent = "정부24 바로가기";
+            card.appendChild(sectionTitle);
+
+            const links = document.createElement("div");
+            links.className = "links";
+            item.links.forEach((link) => {
+              const anchor = document.createElement("a");
+              anchor.href = link.url;
+              anchor.target = "_blank";
+              anchor.rel = "noopener noreferrer";
+              const label = document.createElement("span");
+              label.textContent = "정부24 바로가기";
+              const text = document.createElement("div");
+              text.textContent = link.label || link.url;
+              anchor.appendChild(label);
+              anchor.appendChild(text);
+              links.appendChild(anchor);
+            });
+            card.appendChild(links);
+          }
+
+          resultsEl.appendChild(card);
+        });
+      };
+
+      const extractStructured = (output) => {
+        if (!output) return {};
+        if (output.structuredContent) return output.structuredContent;
+        if (output.toolOutput) return output.toolOutput;
+        if (output.result?.structuredContent) return output.result.structuredContent;
+        if (output.result) return output.result;
+        if (output.data?.structuredContent) return output.data.structuredContent;
+        if (output.data) return output.data;
+        if (output.matches || output.reply) return output;
+        return {};
+      };
+
+      const updateFromOutput = (output) => {
+        const structured = extractStructured(output);
+        state.message = structured.message || "";
+        state.reply = structured.reply || "";
+        state.matches = Array.isArray(structured.matches) ? structured.matches : [];
+        setLoading(false);
+        renderStatus();
+        renderMatches();
+
+      };
+
+      const handleSetGlobals = (event) => {
+        const globals = event.detail?.globals;
+        if (!globals?.toolOutput) return;
+        updateFromOutput(globals.toolOutput);
+      };
+
+      window.addEventListener("openai:set_globals", handleSetGlobals, {
+        passive: true
+      });
+
+      const initialOutput = window.openai?.toolOutput;
+      if (initialOutput) {
+        updateFromOutput(initialOutput);
+      } else {
+        setLoading(true);
+        renderStatus();
+        renderMatches();
+      }
+    </script>
+  </body>
+</html>

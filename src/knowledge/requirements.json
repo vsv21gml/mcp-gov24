@@ -1,0 +1,92 @@
+﻿[
+  {
+    "id": "lease-contract",
+    "title": "주택 임대차(전세) 계약 관련",
+    "summary": "전세 계약 시 확정일자, 전입신고 등으로 권리 보호를 준비합니다.",
+    "keywords": [
+      "전세",
+      "전세계약",
+      "임대차",
+      "확정일자",
+      "전입신고",
+      "보증금",
+      "주택임대차"
+    ],
+    "required_documents": [
+      "임대차계약서 원본 또는 사본",
+      "신분증",
+      "전입신고서(온라인 제출 시 전자신분증/본인인증)"
+    ],
+    "links": [
+      {
+        "label": "정부24 전입신고 검색",
+        "url": "https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=13100000015&tp_seq=01"
+      },
+      {
+        "label": "정부24 확정일자 검색",
+        "url": "https://www.gov.kr/portal/search?searchQuery=%ED%99%95%EC%A0%95%EC%9D%BC%EC%9E%90"
+      }
+    ]
+  },
+  {
+    "id": "resident-copy",
+    "title": "주민등록등본 발급",
+    "summary": "가장 흔한 제출서류로, 세대원 포함 여부를 선택해 발급합니다.",
+    "keywords": [
+      "주민등록등본",
+      "주민등록본",
+      "등본",
+      "주민등록",
+      "등본발급"
+    ],
+    "required_documents": [
+      "본인 인증 수단(공동인증서, 간편인증, 휴대폰 인증 등)"
+    ],
+    "links": [
+      {
+        "label": "정부24 주민등록등본 검색",
+        "url": "https://www.gov.kr/portal/search?searchQuery=%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%93%B1%EB%B3%B8"
+      }
+    ]
+  },
+  {
+    "id": "family-relation",
+    "title": "가족관계증명서 발급",
+    "summary": "가족관계 확인용으로 제출하는 기본 서류입니다.",
+    "keywords": [
+      "가족관계",
+      "가족관계증명서",
+      "가족증명",
+      "증명서"
+    ],
+    "required_documents": [
+      "본인 인증 수단(공동인증서, 간편인증, 휴대폰 인증 등)"
+    ],
+    "links": [
+      {
+        "label": "정부24 가족관계증명서 검색",
+        "url": "https://www.gov.kr/portal/search?searchQuery=%EA%B0%80%EC%A1%B1%EA%B4%80%EA%B3%84%EC%A6%9D%EB%AA%85%EC%84%9C"
+      }
+    ]
+  },
+  {
+    "id": "income-certificate",
+    "title": "소득금액증명 발급",
+    "summary": "대출, 보증 등에서 소득 증빙이 필요할 때 발급합니다.",
+    "keywords": [
+      "소득금액",
+      "소득금액증명",
+      "소득증명",
+      "소득"
+    ],
+    "required_documents": [
+      "본인 인증 수단(공동인증서, 간편인증, 휴대폰 인증 등)"
+    ],
+    "links": [
+      {
+        "label": "정부24 소득금액증명 검색",
+        "url": "https://www.gov.kr/portal/search?searchQuery=%EC%86%8C%EB%93%9D%EA%B8%88%EC%95%A1%EC%A6%9D%EB%AA%85"
+      }
+    ]
+  }
+]
