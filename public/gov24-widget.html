@@ -128,9 +128,10 @@
         background: #ffffff;
         position: relative;
         overflow: hidden;
-        min-width: 320px;
-        max-width: 520px;
-        min-height: 360px;
+        width: 420px;
+        min-width: 420px;
+        max-width: 420px;
+        min-height: 280px;
         flex: 0 0 auto;
         scroll-snap-align: start;
       }
@@ -213,11 +214,6 @@
         background: #e2e8f0;
         border-radius: 10px;
         padding: 8px 10px;
-      }
-
-      .links a span {
-        color: #1d4ed8;
-        font-weight: 700;
       }
 
       .empty {
@@ -347,11 +343,6 @@
           }
 
           if (Array.isArray(item.links) && item.links.length) {
-            const sectionTitle = document.createElement("div");
-            sectionTitle.className = "section-title";
-            sectionTitle.textContent = "정부24 바로가기";
-            card.appendChild(sectionTitle);
-
             const links = document.createElement("div");
             links.className = "links";
             item.links.forEach((link) => {
@@ -359,12 +350,7 @@
               anchor.href = link.url;
               anchor.target = "_blank";
               anchor.rel = "noopener noreferrer";
-              const label = document.createElement("span");
-              label.textContent = "정부24 바로가기";
-              const text = document.createElement("div");
-              text.textContent = link.label || link.url;
-              anchor.appendChild(label);
-              anchor.appendChild(text);
+              anchor.textContent = link.label || "정부24 바로가기";
               links.appendChild(anchor);
             });
             card.appendChild(links);
