@@ -1,0 +1,46 @@
+replicaCount: 1
+
+image:
+  repository: gov24-chatgpt-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: gov24.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+env:
+  GOV24_SEARCH_URL: "https://plus.gov.kr/api/iwcas/guide/v1.0/search/mergeResult"
+  GOV24_LIST_COUNT: "10"
+  PORT: "3000"
+
+resources: {}
+
+livenessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 10
+  periodSeconds: 20
+
+readinessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
