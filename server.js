@@ -11,7 +11,7 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const MCP_PATH = process.env.MCP_PATH || '/mcp';
+const MCP_PATH = process.env.MCP_PATH || '/gov24/mcp';
 const PORT = Number(process.env.PORT || 3000);
 const WIDGET_URI = 'ui://gov24/widget.html';
 const GOV24_SEARCH_URL =
